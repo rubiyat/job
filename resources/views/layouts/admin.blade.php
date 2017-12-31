@@ -27,6 +27,7 @@
 
     <!-- Custom Css -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="{{ asset('css/themes/all-themes.css') }}" rel="stylesheet" />
@@ -304,6 +305,12 @@
                         <a href="index.html">
                             <i class="material-icons">home</i>
                             <span>Home</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="{{ route('roles.index') }}">
+                            <i class="material-icons">home</i>
+                            <span>Roles</span>
                         </a>
                     </li>
                     <li>
@@ -794,9 +801,6 @@
 
     <section class="content">
         <div class="container-fluid">
-            <div class="block-header">
-                <h2>DASHBOARD</h2>
-            </div>
 
             @yield('content')
             
@@ -844,6 +848,7 @@
 
     <!-- Demo Js -->
     <script src="{{ asset('js/demo.js') }}"></script>
+
 </body>
 
 </html>
