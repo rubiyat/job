@@ -15,7 +15,10 @@ class RolesController extends Controller
     public function index()
     {
         $roles = Role::all();
-        return view('admin.roles.index', compact(['roles']));
+
+        $number = 1;
+
+        return view('admin.roles.index', compact(['roles', 'number']));
     }
 
     /**
@@ -52,9 +55,9 @@ class RolesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Role $role)
     {
-        //
+        return view('roles.show', compact(['role']));
     }
 
     /**
@@ -86,8 +89,9 @@ class RolesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Role $role)
     {
-        //
+        $role->delete();
+        return redirect()->back();
     }
 }
