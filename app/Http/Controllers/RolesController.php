@@ -36,7 +36,14 @@ class RolesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $role = new Role;
+
+        $role->name = $request->input('name');
+        $role->description = $request->input('description');
+        $role->is_active = $request->input('is_active');
+
+        $role->save();
+        return redirect()->back();
     }
 
     /**
