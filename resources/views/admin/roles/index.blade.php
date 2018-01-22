@@ -35,7 +35,7 @@
                         <a type="button" href="" class="btn btn-success glyphicon glyphicon-edit" title="Edit"></a>
                         <form action="{!! action('RolesController@destroy', $role->id) !!}" method="POST" style="display: inline-block;">
                             {{ csrf_field() }} {{ method_field('DELETE') }}
-                           <button type="submit" role="button" class="btn btn-danger"><i class="glyphicon glyphicon-trash" title="Delete"></i></button>
+                           <button type="submit" title="Delete" role="button" class="btn btn-danger"><i class="glyphicon glyphicon-trash" title="Delete"></i></button>
                         </form>        
 
                     </td>

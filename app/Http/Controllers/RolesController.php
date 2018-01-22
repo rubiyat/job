@@ -57,7 +57,7 @@ class RolesController extends Controller
      */
     public function show(Role $role)
     {
-        return view('roles.show', compact(['role']));
+        return view('admin.roles.show', compact(['role']));
     }
 
     /**
@@ -92,6 +92,6 @@ class RolesController extends Controller
     public function destroy(Role $role)
     {
         $role->delete();
-        return redirect()->back();
+        return redirect('admin/roles');
     }
 }
