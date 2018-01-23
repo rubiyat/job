@@ -66,9 +66,9 @@ class RolesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Role $role)
     {
-        //
+        return view('admin.roles.edit', compact(['role']));
     }
 
     /**
@@ -78,9 +78,14 @@ class RolesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Role $role)
     {
-        //
+        $role->name = $request->input('name');
+        $role->description = $request->input('description');
+        $role->is_active = $request->input('is_active');
+
+        $role->save();
+        return redirect('admin/roles');
     }
 
     /**

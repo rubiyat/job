@@ -5,7 +5,8 @@
     <div class="panel panel-danger panel-top">
       <div class="panel-heading">
         <span class="heading">ROLE</span>
-        <a type="button" href="{{route('roles.create')}}" class="btn btn-primary pull-right"> <i class="glyphicon glyphicon-plus"> </i> Add New Role</a>
+        <a type="button" href="{{route('roles.create')}}" class="btn btn-primary pull-right hidden-print"> <i class="glyphicon glyphicon-plus"> </i> Add New Role</a>
+        <button style="margin-right:5px;" title="Print" type="button" onclick="window.print();" class="btn btn-primary pull-right hidden-print"><i class="glyphicon glyphicon-print"></i></button>
         <div class="clearfix"></div>
       </div>
       <div class="panel-body">
@@ -16,7 +17,7 @@
                     <th>#</th>
                     <th width="60%">Role Name</th>
                     <th>Status</th>
-                    <th>Action</th>
+                    <th class="hidden-print">Action</th>
                 </tr>
             </thead>
             @foreach($roles as $role)
@@ -30,9 +31,9 @@
                             '<span class="label label-danger">Inactive</span>'
                         !!}
                     </td>
-                    <td>
+                    <td class="hidden-print">
                         <a type="button" href="{{ route('roles.show', ['role' => $role->id]) }}" class="btn btn-info glyphicon glyphicon-eye-open" title="Show"></a>
-                        <a type="button" href="" class="btn btn-success glyphicon glyphicon-edit" title="Edit"></a>
+                        <a type="button" href="{{ route('roles.edit', ['role' => $role->id]) }}" class="btn btn-success glyphicon glyphicon-edit" title="Edit"></a>
                         <form action="{!! action('RolesController@destroy', $role->id) !!}" method="POST" style="display: inline-block;">
                             {{ csrf_field() }} {{ method_field('DELETE') }}
                            <button type="submit" title="Delete" role="button" class="btn btn-danger"><i class="glyphicon glyphicon-trash" title="Delete"></i></button>
