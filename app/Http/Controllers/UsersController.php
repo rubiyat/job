@@ -67,9 +67,9 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return view('admin.users.edit', compact('user'));
     }
 
     /**
@@ -79,9 +79,16 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->is_active = $request->input('is_active');
+        $user->interested_role = $request->input('interested_role');
+        $user->password = bcrypt($request->input('password'));
+
+        $user->save();
+        return redirect('admin/users');
     }
 
     /**
