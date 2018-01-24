@@ -10,6 +10,8 @@
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
+                        
+                        <input type="hidden" name="is_active" value="0">
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">Name</label>
@@ -38,6 +40,18 @@
                                 @endif
                             </div>
                         </div>
+     
+                        <div class="form-group">
+                            <label for="interested_role" class="col-md-4 control-label">Job Option</label>
+                            
+                            <div class="col-md-6">
+                                <select name="interested_role" class="form-control" id="interested_role">
+                                    <option value="">-Please Select-</option>
+                                    <option value="0">Hire</option>
+                                    <option value="1">Work</option>
+                                </select>
+                            </div>
+                        </div>      
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>

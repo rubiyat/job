@@ -170,6 +170,9 @@
                     <li>
                         <a href="{{ route('roles.index') }}"><i class="glyphicon glyphicon-asterisk"></i> Roles</a>
                     </li>
+                     <li>
+                        <a href="{{ route('users.index') }}"><i class="glyphicon glyphicon-user"></i> Users</a>
+                    </li>
                     <li>
                         <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
                     </li>
