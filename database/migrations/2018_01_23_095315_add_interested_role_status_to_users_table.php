@@ -14,8 +14,8 @@ class AddInterestedRoleStatusToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('interested_role', 100);
-            $table->boolean('is_active');
+            $table->boolean('interested_role')->after('password');
+            $table->boolean('is_active')->default(0)->after('interested_role');
         });
     }
 
@@ -27,8 +27,8 @@ class AddInterestedRoleStatusToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('interested_role', 100);
-            $table->boolean('is_active');
+            $table->dropColumn('interested_role');
+            $table->dropColumn('is_active');
         });
     }
 }
