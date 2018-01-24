@@ -27,7 +27,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.users.create');
     }
 
     /**
@@ -38,7 +38,16 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new User;
+
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->is_active = $request->input('is_active');
+        $user->interested_role = $request->input('interested_role');
+        $user->password = $request->input('password');
+
+        $user->save();
+        return redirect()->back();
     }
 
     /**
