@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\JobCategory;
 
 class JobCategoriesController extends Controller
 {
@@ -13,7 +14,10 @@ class JobCategoriesController extends Controller
      */
     public function index()
     {
-        //
+        $jobCategories = JobCategory::all();
+        $number = 1;
+
+        return view('admin.job-categories.index', compact('jobCategories', 'number'));
     }
 
     /**
