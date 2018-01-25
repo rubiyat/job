@@ -6,7 +6,7 @@
 	<div class="panel panel-danger panel-top">
 	  <div class="panel-heading">
 	    <span class="heading">Edit User</span>
-	     <a type="button" href="{{ route('users.index') }}" class="btn btn-danger pull-right"> <i class="glyphicon glyphicon-remove"> </i> Cancel</a>
+	     <a type="button" href="{{ route('users.index') }}" class="btn btn-danger pull-right"> <i class="glyphicon glyphicon-menu-left"> </i> Go To Index</a>
 	      <div class="clearfix"></div>
 	  </div>
 	  <div class="panel-body">

@@ -68,9 +68,9 @@ class JobCategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(JobCategory $jobCategory)
     {
-        //
+        return view('admin.job-categories.edit', compact(['jobCategory']));
     }
 
     /**
@@ -80,9 +80,17 @@ class JobCategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, JobCategory $jobCategory)
     {
-        //
+        //dd($request->all());
+        $jobCategory->title = $request->input('title');
+        $jobCategory->description = $request->input('description');
+        $jobCategory->is_active = $request->input('is_active');
+        $jobCategory->updated_by = auth()->user()->id;
+
+        $jobCategory->save();
+
+        return redirect('admin/job-categories');
     }
 
     /**
