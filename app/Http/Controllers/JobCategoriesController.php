@@ -58,7 +58,8 @@ class JobCategoriesController extends Controller
      */
     public function show(JobCategory $jobCategory)
     {
-        
+        //dd($jobCategory->user->name);
+        return view('admin.job-categories.show', compact(['jobCategory']));
     }
 
     /**
