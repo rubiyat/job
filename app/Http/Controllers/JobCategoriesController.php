@@ -27,7 +27,7 @@ class JobCategoriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.job-categories.create');
     }
 
     /**
@@ -38,7 +38,16 @@ class JobCategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $jobCategories = new JobCategory;
+
+        $jobCategories->title = $request->input('title');
+        $jobCategories->description = $request->input('description');
+        $jobCategories->is_active = $request->input('is_active');
+        $jobCategories->created_by = auth()->user()->id;
+
+        $jobCategories->save();
+
+        return back();
     }
 
     /**
@@ -47,9 +56,9 @@ class JobCategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(JobCategory $jobCategory)
     {
-        //
+        
     }
 
     /**
