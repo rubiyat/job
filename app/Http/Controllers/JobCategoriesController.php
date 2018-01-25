@@ -91,8 +91,9 @@ class JobCategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(JobCategory $jobCategory)
     {
-        //
+        $jobCategory->delete();
+        return redirect('admin/job-categories');
     }
 }
