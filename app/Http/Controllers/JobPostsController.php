@@ -80,8 +80,9 @@ class JobPostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(JobPost $jobPost)
     {
-        //
+        $jobPost->delete();
+        return redirect('admin/job-posts');
     }
 }
