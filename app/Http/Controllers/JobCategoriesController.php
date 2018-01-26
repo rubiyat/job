@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\JobCategory;
+use Illuminate\Support\Facades\Session;
 
 class JobCategoriesController extends Controller
 {
@@ -40,10 +41,20 @@ class JobCategoriesController extends Controller
     {
         $jobCategories = new JobCategory;
 
+        $this->validate($request,[
+                      'title' => 'required|unique:job_categories|max:100',
+                  ],[
+                      'title.required' => ' The job category title field is required.',
+                      'title.max' => ' The job category title may not be greater than 100 characters.',
+                      'title.unique' => ' It seems job category title already exist',
+                  ]);
+
         $jobCategories->title = $request->input('title');
         $jobCategories->description = $request->input('description');
         $jobCategories->is_active = $request->input('is_active');
         $jobCategories->created_by = auth()->user()->id;
+
+        Session::flash('success','Job Category Successfully Added');
 
         $jobCategories->save();
 
@@ -82,14 +93,22 @@ class JobCategoriesController extends Controller
      */
     public function update(Request $request, JobCategory $jobCategory)
     {
-        //dd($request->all());
+         $this->validate($request,[
+                      'title' => 'required|unique:job_categories|max:100',
+                  ],[
+                      'title.required' => ' The job category title field is required.',
+                      'title.max' => ' The job category title may not be greater than 100 characters.',
+                      'title.unique' => ' It seems job category title already exist',
+                  ]);
+
         $jobCategory->title = $request->input('title');
         $jobCategory->description = $request->input('description');
         $jobCategory->is_active = $request->input('is_active');
         $jobCategory->updated_by = auth()->user()->id;
 
-        $jobCategory->save();
+        Session::flash('update','Job Category Successfully Updated');
 
+        $jobCategory->save();
         return redirect('admin/job-categories');
     }
 
@@ -102,6 +121,7 @@ class JobCategoriesController extends Controller
     public function destroy(JobCategory $jobCategory)
     {
         $jobCategory->delete();
+        Session::flash('delete','Job Category Successfully delete');
         return redirect('admin/job-categories');
     }
 }
