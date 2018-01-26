@@ -71,9 +71,10 @@ class JobPostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(JobPost $jobPost)
     {
-        //
+        $jobCategories = JobCategory::all();
+        return view('admin.job-posts.edit', compact(['jobPost', 'jobCategories']));
     }
 
     /**
@@ -83,9 +84,18 @@ class JobPostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, JobPost $jobPost)
     {
-        //
+        $jobPost->job_category_id = $request->input('job_category_id');
+        $jobPost->title = $request->input('title');
+        $jobPost->description = $request->input('description');
+        $jobPost->payment_amount = $request->input('payment_amount');
+        $jobPost->working_date_time = $request->input('working_date_time');
+        $jobPost->required_employee = $request->input('required_employee');
+        $jobPost->is_active = $request->input('is_active');
+
+        $jobPost->save();
+        return redirect('admin/job-posts');
     }
 
     /**
