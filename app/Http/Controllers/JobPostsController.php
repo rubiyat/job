@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\JobPost;
+use App\JobCategory;
 
 class JobPostsController extends Controller
 {
@@ -26,7 +27,8 @@ class JobPostsController extends Controller
      */
     public function create()
     {
-        //
+        $jobCategories = JobCategory::all();
+        return view('admin.job-posts.create', compact(['jobCategories']));
     }
 
     /**
@@ -37,7 +39,19 @@ class JobPostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $jobPost = new JobPost;
+
+        $jobPost->job_category_id = $request->input('job_category_id');
+        $jobPost->title = $request->input('title');
+        $jobPost->description = $request->input('description');
+        $jobPost->payment_amount = $request->input('payment_amount');
+        $jobPost->working_date_time = $request->input('working_date_time');
+        $jobPost->required_employee = $request->input('required_employee');
+        $jobPost->is_active = $request->input('is_active');
+
+        $jobPost->save();
+        return redirect()->back();
+
     }
 
     /**
