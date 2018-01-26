@@ -60,9 +60,9 @@ class JobPostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(JobPost $jobPost)
     {
-        //
+        return view('admin.job-posts.show', compact(['jobPost']));
     }
 
     /**

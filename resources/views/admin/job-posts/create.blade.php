@@ -11,7 +11,7 @@
 		  <div class="panel-body">
 		        <form method="POST" action="{{ route('job-posts.store') }}">
 		        {{ csrf_field() }}
-		         <label for="job_category_id">Job Category</label>         
+		        <label for="job_category_id">Job Category</label>         
 	            <div class="form-group">
 	                <select name="job_category_id" class="form-control" id="job_category_id">
 	                	@foreach ($jobCategories as $jobCategory)
