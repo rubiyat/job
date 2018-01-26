@@ -4,6 +4,25 @@
 
 
 	<div class="panel panel-danger panel-top">
+    
+      @if ($message = Session::get('update'))
+      <div class="alert alert-success alert-block">
+         <button type="button" class="close" data-dismiss="alert">×</button> 
+              <strong>{{ $message }}</strong>
+      </div>
+      @endif
+
+      @if(count($errors))
+          <div class="alert alert-danger">
+            <strong>Whoops!</strong> There were some problems with your input.
+            <br/>
+            <ul>
+              @foreach($errors->all() as $error)
+              <li>{{ $error }}</li>
+              @endforeach
+            </ul>
+          </div>
+        @endif
 	  <div class="panel-heading">
 	    <span class="heading">Edit Role</span>
 	     <a type="button" href="{{ route('roles.index') }}" class="btn btn-danger pull-right"> <i class="glyphicon glyphicon-menu-left"> </i> Go To Index</a>

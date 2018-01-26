@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Role;
+use Illuminate\Support\Facades\Session;
 
 class RolesController extends Controller
 {
@@ -41,9 +42,19 @@ class RolesController extends Controller
     {
         $role = new Role;
 
+        $this->validate($request,[
+                      'name' => 'required|unique:roles|max:100',
+                  ],[
+                      'name.required' => ' The role name field is required.',
+                      'name.max' => ' The role name may not be greater than 100 characters.',
+                      'name.unique' => ' It seems role name already exist',
+                  ]);
+
         $role->name = $request->input('name');
         $role->description = $request->input('description');
         $role->is_active = $request->input('is_active');
+
+        Session::flash('success','Role Successfully Added');
 
         $role->save();
         return redirect()->back();
@@ -80,9 +91,19 @@ class RolesController extends Controller
      */
     public function update(Request $request, Role $role)
     {
+          $this->validate($request,[
+                      'name' => 'required|unique:roles|max:100',
+                  ],[
+                      'name.required' => ' The role name field is required.',
+                      'name.max' => ' The role name may not be greater than 100 characters.',
+                      'name.unique' => ' It seems role name already exist',
+                  ]);
+
         $role->name = $request->input('name');
         $role->description = $request->input('description');
         $role->is_active = $request->input('is_active');
+
+        Session::flash('update','Role Successfully Updated');
 
         $role->save();
         return redirect('admin/roles');
@@ -97,6 +118,7 @@ class RolesController extends Controller
     public function destroy(Role $role)
     {
         $role->delete();
+        Session::flash('delete','Role Successfully Delete');
         return redirect('admin/roles');
     }
 }

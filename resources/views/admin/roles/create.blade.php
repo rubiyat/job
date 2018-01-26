@@ -4,6 +4,25 @@
 
 
 	<div class="panel panel-danger panel-top">
+
+     @if ($message = Session::get('success'))
+     <div class="alert alert-success alert-block">
+        <button type="button" class="close" data-dismiss="alert">×</button> 
+             <strong>{{ $message }}</strong>
+     </div>
+     @endif
+
+      @if(count($errors))
+          <div class="alert alert-danger">
+            <strong>Whoops!</strong> There were some problems with your input.
+            <br/>
+            <ul>
+              @foreach($errors->all() as $error)
+              <li>{{ $error }}</li>
+              @endforeach
+            </ul>
+          </div>
+        @endif
 	  <div class="panel-heading">
 	    <span class="heading">Add New Role</span>
 	     <a type="button" href="{{ route('roles.index') }}" class="btn btn-danger pull-right"> <i class="glyphicon glyphicon-remove"> </i> Cancel</a>
@@ -15,7 +34,7 @@
             <label for="name">Role Name</label>
             <div class="form-group">
                 <div class="form-line">
-                    <input type="text" name="name" id="name" class="form-control" placeholder="Enter Role Name">
+                    <input type="text" name="name" id="name" class="form-control" placeholder="Enter Role Name" required>
                 </div>
             </div>
             <label for="description">Description</label>
