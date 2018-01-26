@@ -177,6 +177,9 @@
                         <a href="{{ route('job-categories.index') }}"> <i class="glyphicon glyphicon-tags"> </i> Job Category</a>
                     </li>
                     <li>
+                        <a href="{{ route('job-posts.index') }}"> <i class="glyphicon glyphicon-tags"> </i> Job Posts</a>
+                    </li>
+                    <li>
                         <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
                     </li>
                     <li>
