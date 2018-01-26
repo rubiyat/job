@@ -9,4 +9,8 @@ class JobCategory extends Model
     public function user() {
     	return $this->belongsTo('App\User');
     }
+
+    public function jobPosts() {
+    	return $this->hasMany('App\JobPost');
+    }
 }

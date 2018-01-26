@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\JobPost;
 
 class JobPostsController extends Controller
 {
@@ -13,7 +14,9 @@ class JobPostsController extends Controller
      */
     public function index()
     {
-        //
+        $jobPosts = JobPost::all();
+        $number = 1;
+        return view('admin.job-posts.index', compact(['jobPosts', 'number']));
     }
 
     /**
