@@ -180,7 +180,7 @@
                         <a href="{{ route('job-posts.index') }}"> <i class="glyphicon glyphicon-tags"> </i> Job Posts</a>
                     </li>
                     <li>
-                        <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
+                        <a href="{{ route('photos.index') }}"><i class="glyphicon glyphicon-picture"></i> Medias</a>
                     </li>
                     <li>
                         <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>

@@ -31,5 +31,6 @@ Route::group(['middleware'=>['auth']], function(){
 	Route::resource('admin/users', 'UsersController');
 	Route::resource('admin/job-categories', 'JobCategoriesController');
 	Route::resource('admin/job-posts', 'JobPostsController');
+	Route::resource('admin/photos', 'PhotosController');
 
 });
