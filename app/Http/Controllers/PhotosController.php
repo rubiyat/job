@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Photo;
+use Illuminate\Support\Facades\Storage;
 
 class PhotosController extends Controller
 {
@@ -14,7 +15,8 @@ class PhotosController extends Controller
      */
     public function index()
     {
-        return view('admin.photos.index');
+        $photos = Photo::all();
+        return view('admin.photos.index', compact(['photos']));
     }
 
     /**
@@ -35,13 +37,22 @@ class PhotosController extends Controller
      */
     public function store(Request $request)
     {
-        $file = $request->file('file');
 
-        $name = time() . $file->getClientOriginalName();
+        $input = $request->all();
 
-        $file->move('images',$name);
+        if($file = $request->file('file')){
+            $name = $file->getClientOriginalName();
+             $file->move('images',$name);
+             $input['path'] = $name;
+        }
 
-        Photo::create(['file'=>$name]);
+        
+
+        
+
+       
+
+        Photo::create($input);
     }
 
     /**
