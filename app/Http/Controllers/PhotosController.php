@@ -46,12 +46,6 @@ class PhotosController extends Controller
              $input['path'] = $name;
         }
 
-        
-
-        
-
-       
-
         Photo::create($input);
     }
 
@@ -61,9 +55,9 @@ class PhotosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Photo $photo)
     {
-        //
+        return view('admin.photos.show', compact('photo'));
     }
 
     /**

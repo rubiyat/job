@@ -15,9 +15,8 @@
            <thead>
                <tr>
                    <th>Id</th>
-                   <th>Name</th>
-                   <th>Created</th>
-
+                   <th>Image</th>
+                   <th>Action</th>
                </tr>
            </thead>
            <tbody>
@@ -25,8 +24,8 @@
                <tr>
                    <td>{{$photo->id}}</td>
                    <td><img height="100" src="{!! url($photo->file) !!}"/> </td>
-                   <td>{{$photo->created_at ? $photo->created_at : 'no date'}}</td>
                    <td>
+                        <a type="button" href="{{ route('photos.show', ['photo' => $photo->id]) }}" class="btn btn-info glyphicon glyphicon-eye-open" title="Show"></a>
                         <form action="{!! action('PhotosController@destroy', $photo->id) !!}" method="POST" style="display: inline-block;">
                             {{ csrf_field() }} {{ method_field('DELETE') }}
                            <button type="submit" title="Delete" role="button" class="btn btn-danger"><i class="glyphicon glyphicon-trash" title="Delete"></i></button>
