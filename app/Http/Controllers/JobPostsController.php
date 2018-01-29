@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\JobPost;
 use App\JobCategory;
+use Illuminate\Support\Facades\Session;
 
 class JobPostsController extends Controller
 {
@@ -41,6 +42,20 @@ class JobPostsController extends Controller
     {
         $jobPost = new JobPost;
 
+         $this->validate($request,[
+                      'title' => 'required|max:100',
+                      'payment_amount' => 'required',
+                      'working_date_time' => 'required',
+                      'required_employee ' => 'required|max:2',
+                  ],[
+                      'title.required' => ' The job title field is required.',
+                      'title.max' => ' The job title may not be greater than 100 characters.',
+                      'payment_amount.required' => ' The payment amount field is required.',
+                      'working_date_time.required' => ' The working date time field is required.',
+                      'required_employee.required' => ' The required employee field is required.',
+                      'required_employee.max' => ' The required employee may not be greater than 99 digit.',
+                  ]);
+
         $jobPost->job_category_id = $request->input('job_category_id');
         $jobPost->title = $request->input('title');
         $jobPost->description = $request->input('description');
@@ -48,6 +63,8 @@ class JobPostsController extends Controller
         $jobPost->working_date_time = $request->input('working_date_time');
         $jobPost->required_employee = $request->input('required_employee');
         $jobPost->is_active = $request->input('is_active');
+
+         Session::flash('success','Job Post Successfully Added');
 
         $jobPost->save();
         return redirect()->back();
@@ -86,6 +103,19 @@ class JobPostsController extends Controller
      */
     public function update(Request $request, JobPost $jobPost)
     {
+         $this->validate($request,[
+                      'title' => 'required|max:100',
+                      'payment_amount' => 'required',
+                      'working_date_time' => 'required',
+                      'required_employee ' => 'required',
+                  ],[
+                      'title.required' => ' The job title field is required.',
+                      'title.max' => ' The job title may not be greater than 100 characters.',
+                      'payment_amount.required' => ' The payment amount field is required.',
+                      'working_date_time.required' => ' The working date time field is required.',
+                      'required_employee.required' => ' The required employee field is required.',
+                  ]);
+
         $jobPost->job_category_id = $request->input('job_category_id');
         $jobPost->title = $request->input('title');
         $jobPost->description = $request->input('description');
@@ -93,6 +123,8 @@ class JobPostsController extends Controller
         $jobPost->working_date_time = $request->input('working_date_time');
         $jobPost->required_employee = $request->input('required_employee');
         $jobPost->is_active = $request->input('is_active');
+
+         Session::flash('update','Job Post Successfully Update');
 
         $jobPost->save();
         return redirect('admin/job-posts');
@@ -107,6 +139,7 @@ class JobPostsController extends Controller
     public function destroy(JobPost $jobPost)
     {
         $jobPost->delete();
+         Session::flash('delete','Job Post Deleted');
         return redirect('admin/job-posts');
     }
 }
