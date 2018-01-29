@@ -89,8 +89,13 @@ class PhotosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Photo $photo)
     {
-        //
+        unlink(public_path() .  $photo->file);
+
+        $photo->delete();
+
+
+        return redirect('/admin/photos');
     }
 }
