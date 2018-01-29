@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Photo;
 
 class PhotosController extends Controller
 {
@@ -13,7 +14,7 @@ class PhotosController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.photos.index');
     }
 
     /**
@@ -23,7 +24,7 @@ class PhotosController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.photos.create');
     }
 
     /**
@@ -34,7 +35,13 @@ class PhotosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $file = $request->file('file');
+
+        $name = time() . $file->getClientOriginalName();
+
+        $file->move('images',$name);
+
+        Photo::create(['file'=>$name]);
     }
 
     /**
