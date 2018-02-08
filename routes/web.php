@@ -28,10 +28,18 @@ Route::group(['middleware'=>['auth']], function(){
 	});
 
 	Route::resource('admin/roles', 'RolesController');
-	Route::resource('admin/users', 'UsersController');
+
 	Route::resource('admin/job-categories', 'JobCategoriesController');
 	Route::resource('admin/job-posts', 'JobPostsController');
 	Route::resource('admin/photos', 'PhotosController');
-	Route::resource('admin/admin-profiles', 'AdminProfilesController');
 
+	Route::resource('admin/users', 'UsersController');
+	Route::get('admin/users/{user}/profile', [
+		'as' => 'users.user-profile',
+		'uses' => 'UsersController@userProfile'
+	]);
+	Route::patch('admin/users/{user}/profile-update', [
+		'as' => 'users.user-profile.update',
+		'uses' => 'UsersController@updateProfile'
+	]);	
 });
