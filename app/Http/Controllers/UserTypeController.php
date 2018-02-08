@@ -46,9 +46,9 @@ class UserTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(UserType $userType)
     {
-        //
+        return view('admin.user-types.show', compact(['userType']));
     }
 
     /**
