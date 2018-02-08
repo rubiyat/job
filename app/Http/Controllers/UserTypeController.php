@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\UserType;
 
 class UserTypeController extends Controller
 {
@@ -13,7 +14,9 @@ class UserTypeController extends Controller
      */
     public function index()
     {
-        //
+        $userTypes = UserType::all();
+        $number = 1;
+        return view('admin.user-types.index', compact(['userTypes', 'number']));
     }
 
     /**

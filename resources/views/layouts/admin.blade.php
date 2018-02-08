@@ -185,7 +185,7 @@
                         <a href="{{ route('photos.index') }}"><i class="glyphicon glyphicon-picture"></i> Medias</a>
                     </li>
                     <li>
-                        <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
+                        <a href="{{ route('user-types.index') }}"><i class="fa fa-fw fa-desktop"></i> User Type</a>
                     </li>
                     <li>
                         <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>

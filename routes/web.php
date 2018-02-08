@@ -34,6 +34,7 @@ Route::group(['middleware'=>['auth']], function(){
 	Route::resource('admin/photos', 'PhotosController');
 
 	Route::resource('admin/users', 'UsersController');
+	Route::resource('admin/user-types', 'UserTypeController');
 	Route::get('admin/users/{user}/profile', [
 		'as' => 'users.user-profile',
 		'uses' => 'UsersController@userProfile'
