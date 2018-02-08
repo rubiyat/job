@@ -80,8 +80,9 @@ class UserTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(UserType $userType)
     {
-        //
+        $userType->delete();
+        return redirect('admin/user-types');
     }
 }
