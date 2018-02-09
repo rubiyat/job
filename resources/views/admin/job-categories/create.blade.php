@@ -22,7 +22,7 @@
 			     </div>
 			   @endif
 		  <div class="panel-heading">
-		    <span class="heading">Add New Job Category</span>
+		    <span class="heading">Add New User Type</span>
 		     <a type="button" href="{{ route('job-categories.index') }}" class="btn btn-danger pull-right"> <i class="glyphicon glyphicon-remove"> </i> Cancel</a>
 		      <div class="clearfix"></div>
 		  </div>

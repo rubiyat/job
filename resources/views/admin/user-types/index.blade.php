@@ -3,12 +3,12 @@
 @section('content')
 
     <div class="panel panel-danger panel-top">
-  {{--   @if ($message = Session::get('delete'))
+    @if ($message = Session::get('delete'))
     <div class="alert alert-danger alert-block">
        <button type="button" class="close" data-dismiss="alert">×</button> 
             <strong>{{ $message }}</strong>
     </div>
-    @endif --}}
+    @endif
       <div class="panel-heading">
         <span class="heading">USER TYPE</span>
         <a type="button" href="{{route('user-types.create')}}" class="btn btn-primary pull-right hidden-print"> <i class="glyphicon glyphicon-plus"> </i> Add New User Type</a>

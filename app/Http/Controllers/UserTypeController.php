@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\UserType;
+use Illuminate\Support\Facades\Session;
 
 class UserTypeController extends Controller
 {
@@ -26,7 +27,7 @@ class UserTypeController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.user-types.create');
     }
 
     /**
@@ -37,7 +38,14 @@ class UserTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $userType = new userType;
+        
+        $userType->name = $request->input('name');
+        $userType->description = $request->input('description');
+        $userType->is_active = $request->input('is_active');
+
+        $userType->save();
+        return back();
     }
 
     /**
@@ -83,6 +91,7 @@ class UserTypeController extends Controller
     public function destroy(UserType $userType)
     {
         $userType->delete();
+        Session::flash('delete','User Type Successfully Delete');
         return redirect('admin/user-types');
     }
 }
