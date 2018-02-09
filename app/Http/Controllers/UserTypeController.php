@@ -39,10 +39,21 @@ class UserTypeController extends Controller
     public function store(Request $request)
     {
         $userType = new userType;
+
+        $this->validate($request,[
+                      'name' => 'required|unique:user_types|max:100',
+                  ],[
+                      'name.required' => ' The user type name field is required.',
+                      'name.max' => ' The user type name may not be greater than 100 characters.',
+                      'name.unique' => ' It seems user type name title already exist',
+                  ]);
+
         
         $userType->name = $request->input('name');
         $userType->description = $request->input('description');
         $userType->is_active = $request->input('is_active');
+
+        Session::flash('success','User Type Successfully Added');
 
         $userType->save();
         return back();
@@ -79,10 +90,20 @@ class UserTypeController extends Controller
      */
     public function update(Request $request, UserType $userType)
     {
+        $this->validate($request,[
+                      'name' => 'required|unique:user_types|max:100',
+                  ],[
+                      'name.required' => ' The user type name field is required.',
+                      'name.max' => ' The user type name may not be greater than 100 characters.',
+                      'name.unique' => ' It seems user type name title already exist',
+                  ]);
+
         $userType->name = $request->input('name');
         $userType->description = $request->input('description');
         $userType->is_active = $request->input('is_active');
 
+        Session::flash('update','User Type Successfully Updated');
+        
         $userType->save();
         return redirect('admin/user-types');
     }

@@ -3,7 +3,7 @@
 @section('content')
 
 		<div class="panel panel-danger panel-top">
-			{{-- @if ($message = Session::get('success'))
+			@if ($message = Session::get('success'))
 			<div class="alert alert-success alert-block">
 			   <button type="button" class="close" data-dismiss="alert">×</button> 
 			        <strong>{{ $message }}</strong>
@@ -20,7 +20,7 @@
 			         @endforeach
 			       </ul>
 			     </div>
-			   @endif --}}
+			   @endif
 		  <div class="panel-heading">
 		    <span class="heading">Update User Type</span>
 		     <a type="button" href="{{ route('user-types.index') }}" class="btn btn-danger pull-right"> <i class="glyphicon glyphicon-remove"> </i> Cancel</a>
