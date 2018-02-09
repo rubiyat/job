@@ -65,9 +65,9 @@ class UserTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(UserType $userType)
     {
-        //
+        return view('admin.user-types.edit', compact(['userType']));
     }
 
     /**
@@ -77,9 +77,14 @@ class UserTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, UserType $userType)
     {
-        //
+        $userType->name = $request->input('name');
+        $userType->description = $request->input('description');
+        $userType->is_active = $request->input('is_active');
+
+        $userType->save();
+        return redirect('admin/user-types');
     }
 
     /**
