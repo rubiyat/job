@@ -43,4 +43,5 @@ Route::group(['middleware'=>['auth']], function(){
 		'as' => 'users.user-profile.update',
 		'uses' => 'UsersController@updateProfile'
 	]);	
+	Route::resource('admin/admins', 'AdminController');
 });

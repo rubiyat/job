@@ -14,7 +14,9 @@ class AdminController extends Controller
      */
     public function index()
     {
-        //
+        $admins = Admin::all();
+        $number = 1;
+        return view('admin.admins.index', compact(['admins', 'number']));
     }
 
     /**

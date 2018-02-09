@@ -22,6 +22,7 @@ class CreateAdminsTable extends Migration
             $table->string('phone', 100)->nullable();
             $table->string('image')->nullable();
             $table->string('password');
+            $table->boolean('is_active')->default(0);
             $table->timestamps();
             $table->foreign('role_id')->references('id')->on('roles')->onDelete('restrict')->onUpdate('cascade');
         });
