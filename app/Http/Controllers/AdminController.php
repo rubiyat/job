@@ -75,7 +75,8 @@ class AdminController extends Controller
      */
     public function edit(Admin $admin)
     {
-        //
+        $roles = Role::all();
+        return view('admin.admins.edit', compact(['admin', 'roles']));
     }
 
     /**
@@ -87,7 +88,16 @@ class AdminController extends Controller
      */
     public function update(Request $request, Admin $admin)
     {
-        //
+        $admin->name = $request->input('name');
+        $admin->role_id = $request->input('role_id');
+        $admin->email = $request->input('email');
+        $admin->is_active = $request->input('is_active');        
+        $admin->password = Hash::make($request->input('password'));
+
+        Session::flash('success','Admin Successfully Added');
+
+        $admin->save();
+        return redirect('admin/admins');
     }
 
     /**
@@ -98,6 +108,6 @@ class AdminController extends Controller
      */
     public function destroy(Admin $admin)
     {
-        //
+        
     }
 }
