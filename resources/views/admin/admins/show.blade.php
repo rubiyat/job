@@ -4,7 +4,7 @@
 
     <div class="panel panel-danger panel-top">
       <div class="panel-heading">
-        <span class="heading">USER DETAILS</span>
+        <span class="heading">ADMIN DETAILS</span>
         <a type="button" href="{{route('admins.index')}}" class="btn btn-primary pull-right hidden-print"> <i class="glyphicon glyphicon-menu-left"> </i> Go To Index</a>
         <button style="margin-right:5px;" title="Print" type="button" onclick="window.print();" class="btn btn-primary pull-right hidden-print"><i class="glyphicon glyphicon-print"></i></button>
         <div class="clearfix"></div>

@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Admin;
+use App\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use DB;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -26,7 +30,8 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+        $roles = Role::get(['id','name']);
+        return view('admin.admins.create', compact(['roles']));
     }
 
     /**
@@ -37,7 +42,18 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $admin = new Admin;
+
+        $admin->name = $request->input('name');
+        $admin->role_id = $request->input('role_id');
+        $admin->email = $request->input('email');
+        $admin->is_active = $request->input('is_active');        
+        $admin->password = Hash::make($request->input('password'));
+
+        Session::flash('success','Admin Successfully Added');
+
+        $admin->save();
+        return redirect()->back();
     }
 
     /**
