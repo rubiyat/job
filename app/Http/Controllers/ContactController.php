@@ -45,7 +45,7 @@ class ContactController extends Controller
         $contact->body = $request->input('body');
 
         $contact->save();
-        return redirect('admin/contacts');
+        return back();
     }
 
     /**
@@ -65,9 +65,9 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Contact $contact)
     {
-        //
+        return view('admin.contacts.edit', compact(['contact']));
     }
 
     /**
@@ -77,9 +77,14 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Contact $contact)
     {
-        //
+        $contact->user_id = Auth::user()->id;
+        $contact->subject = $request->input('subject');
+        $contact->body = $request->input('body');
+
+        $contact->save();
+        return redirect('admin/contacts');
     }
 
     /**
