@@ -10,8 +10,8 @@
     </div>
     @endif --}}
       <div class="panel-heading">
-        <span class="heading">CONTACT</span>
-        <a type="button" href="{{route('job-categories.create')}}" class="btn btn-primary pull-right hidden-print"> <i class="glyphicon glyphicon-plus"> </i> Add New Contact</a>
+        <span class="heading">COMMENT</span>
+        <a type="button" href="{{route('contacts.create')}}" class="btn btn-primary pull-right hidden-print"> <i class="glyphicon glyphicon-plus"> </i> Add New Comment</a>
         <button style="margin-right:5px;" title="Print" type="button" onclick="window.print();" class="btn btn-primary pull-right hidden-print"><i class="glyphicon glyphicon-print"></i></button>
         <div class="clearfix"></div>
       </div>
