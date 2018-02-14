@@ -4,7 +4,7 @@
 
 		<div class="panel panel-danger panel-top">
 		
-	{{-- 	@if ($message = Session::get('update'))
+		@if ($message = Session::get('update'))
 		<div class="alert alert-success alert-block">
 		   <button type="button" class="close" data-dismiss="alert">×</button> 
 		        <strong>{{ $message }}</strong>
@@ -21,7 +21,7 @@
 		        @endforeach
 		      </ul>
 		    </div>
-		  @endif --}}
+		  @endif
 		  <div class="panel-heading">
 		    <span class="heading">Edit Job Category</span>
 		     <a type="button" href="{{ route('contacts.index') }}" class="btn btn-danger pull-right"> <i class="glyphicon glyphicon-menu-left"> </i> Go To Index</a>

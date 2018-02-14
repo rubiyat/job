@@ -40,10 +40,18 @@ class ContactController extends Controller
     {
         $contact = new Contact;
 
+         $this->validate($request,[
+                      'subject' => 'required|max:100',
+                  ],[
+                      'subject.required' => ' The contact subject field is required.',
+                      'subject.max' => ' The contact subject may not be greater than 100 characters.',
+                  ]);
+
         $contact->user_id = Auth::user()->id;
         $contact->subject = $request->input('subject');
         $contact->body = $request->input('body');
 
+        Session::flash('success','Contact Successfully Send');
         $contact->save();
         return back();
     }
@@ -79,10 +87,18 @@ class ContactController extends Controller
      */
     public function update(Request $request, Contact $contact)
     {
+          $this->validate($request,[
+                      'subject' => 'required|max:100',
+                  ],[
+                      'subject.required' => ' The contact subject field is required.',
+                      'subject.max' => ' The contact subject may not be greater than 100 characters.',
+                  ]);
+
         $contact->user_id = Auth::user()->id;
         $contact->subject = $request->input('subject');
         $contact->body = $request->input('body');
 
+        Session::flash('update','Contact Successfully Update');
         $contact->save();
         return redirect('admin/contacts');
     }
@@ -96,6 +112,7 @@ class ContactController extends Controller
     public function destroy(Contact $contact)
     {
         $contact->delete();
+        Session::flash('delete','Contact Deleted');
         return redirect('admin/contacts');
     }
 }
