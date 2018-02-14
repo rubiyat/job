@@ -30,4 +30,8 @@ class User extends Authenticatable
     public function jobCategories() {
         return $this->hasMany('App\JobCategory');
     }
+
+    public function contacts() {
+        return $this->hasMany('App\Contact');
+    }
 }
