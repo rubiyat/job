@@ -190,6 +190,9 @@
                     <li>
                         <a href="{{ route('admins.index') }}"><i class="fa fa-fw fa-wrench"></i> Admin </a>
                     </li>
+                     <li>
+                        <a href="{{ route('contacts.index') }}"><i class="fa fa-fw fa-wrench"></i> Contact Us </a>
+                    </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
