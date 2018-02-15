@@ -45,10 +45,10 @@
                             <label for="interested_role" class="col-md-4 control-label">Job Option</label>
                             
                             <div class="col-md-6">
-                                <select name="interested_role" class="form-control" id="interested_role">
+                                <select name="user_type_id" class="form-control" id="user_type_id">
                                     <option value="">-Please Select-</option>
-                                    <option value="0">Hire</option>
-                                    <option value="1">Work</option>
+                                    <option value="1">Hire</option>
+                                    <option value="2">Work</option>
                                 </select>
                             </div>
                         </div>      
