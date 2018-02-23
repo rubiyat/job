@@ -15,10 +15,7 @@
         <hr>
         <div class="row">
             <div class="col-lg-3">
-                {!! ($user->interested_role == 0) ? 
-                    '<span class="label label-primary">Hire</span>' :
-                    '<span class="label label-info">Work</span>'
-                !!}
+                {{ $user->userType->name }}
             </div>
             <div class="col-lg-3">
                 {!! ($user->is_active == 0) ? 

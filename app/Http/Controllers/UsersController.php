@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Session;
 use DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\File;
+use App\UserType;
+use App\Seeker;
 
 class UsersController extends Controller
 {
@@ -31,7 +33,8 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('admin.users.create');
+        $userTypes = UserType::get(['id','name']);
+        return view('admin.users.create',compact(['userTypes']));
     }
 
     /**
@@ -58,12 +61,20 @@ class UsersController extends Controller
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->is_active = $request->input('is_active');
-        $user->interested_role = $request->input('interested_role');
+        $user->user_type_id = $request->input('user_type_id');
         $user->password = $request->input('password');
 
         Session::flash('success','User Successfully Added');
 
         $user->save();
+
+        $seeker = new Seeker;
+
+        if($user->is_active = 0 && $user->user_type_id = 1) {
+            $seeker->user_id = $user->id;
+            $seeker->save();
+        }
+
         return redirect()->back();
     }
 
@@ -86,7 +97,8 @@ class UsersController extends Controller
      */
     public function edit(User $user)
     {
-        return view('admin.users.edit', compact('user'));
+        $userTypes = UserType::get(['id','name']);
+        return view('admin.users.edit', compact('user','userTypes'));
     }
 
     /**
@@ -112,7 +124,7 @@ class UsersController extends Controller
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->is_active = $request->input('is_active');
-        $user->interested_role = $request->input('interested_role');
+        $user->user_type_id = $request->input('user_type_id');
         $user->password = bcrypt($request->input('password'));
 
         Session::flash('update','User Successfully Updated');

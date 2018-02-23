@@ -33,9 +33,9 @@
                     <td>{{ $number++ }}</td>
                     <td>{{ $user->name }}</td>
                      <td>
-                        {!! ($user->interested_role == 0) ? 
-                            '<span class="label label-primary">Hire</span>' :
-                            '<span class="label label-info">Work</span>'
+                        {!! ($user->user_type_id == 1) ? 
+                            '<span class="label label-primary">Job Seeker</span>' :
+                            '<span class="label label-info">Job Provider</span>'
                         !!}
                     </td>
                     <td>

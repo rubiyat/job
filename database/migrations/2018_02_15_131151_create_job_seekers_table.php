@@ -17,9 +17,9 @@ class CreateJobSeekersTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned()->nullable()->index();
 
-            $table->float('hourly_rate', 8, 2);
-            $table->time('work_time_start');
-            $table->time('work_time_end');
+            $table->float('hourly_rate', 8, 2)->nullable();
+            $table->time('work_time_start')->nullable();
+            $table->time('work_time_end')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict')->onUpdate('cascade');

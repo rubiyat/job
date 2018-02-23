@@ -43,6 +43,17 @@
                      <input type="text" name="email" id="email" class="form-control" placeholder="Enter Email Address" value="{{ $user->email }}">
                 </div>
             </div>  
+            <label for="user_type_id">User Type</label>         
+            <div class="form-group">
+                <select name="user_type_id" class="form-control" id="user_type_id">
+                    <option value="{{ $user->user_type_id }}">
+                        {{ $user->userType->name }}
+                    </option>
+                    @foreach ($userTypes as $userType)
+                        <option value="{{ $userType->id }}">{{ $userType->name }}</option>
+                    @endforeach
+                </select>
+            </div> 
             <label for="is_active">Status</label>         
             <div class="form-group">
                 <select name="is_active" class="form-control" id="is_active">
@@ -58,21 +69,7 @@
                     !!}
                 </select>
             </div>         
-            <label for="interested_role">Job Option</label>         
-            <div class="form-group">
-                <select name="interested_role" class="form-control" id="interested_role">
-                    <option value="{{ $user->interested_role }}">
-                        {!! ($user->interested_role == 0) ? 
-                            'Hire' :
-                            'Work'
-                        !!}
-                    </option>
-                    {!! ($user->interested_role == 0) ? 
-                        '<option value="1">Work</option>' :
-                        '<option value="0">Hire</option>'
-                    !!}
-                </select>
-            </div> 
+            
             <label for="password">Password</label>
             <div class="form-group">               
                 <div class="form-line">
