@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use DB;
 
 class SeekerController extends Controller
 {
@@ -13,7 +15,10 @@ class SeekerController extends Controller
      */
     public function index()
     {
-        //
+        $seekers = User::where('user_type_id', 1)->where('is_active', 0)->get();
+        $number = 1;
+
+        return view('admin.seekers.index', compact(['seekers', 'number']));
     }
 
     /**

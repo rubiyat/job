@@ -45,4 +45,5 @@ Route::group(['middleware'=>['auth']], function(){
 	]);	
 	Route::resource('admin/admins', 'AdminController');
 	Route::resource('admin/contacts', 'ContactController');
+	Route::resource('admin/seekers', 'SeekerController');
 });
