@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Seeker;
 use App\User;
 use DB;
 
@@ -15,10 +16,10 @@ class SeekerController extends Controller
      */
     public function index()
     {
-        $seekers = User::where('user_type_id', 1)->where('is_active', 0)->get();
+        $users = User::where('user_type_id', 1)->where('is_active', 0)->get();
         $number = 1;
 
-        return view('admin.seekers.index', compact(['seekers', 'number']));
+        return view('admin.seekers.index', compact(['users', 'number']));
     }
 
     /**
@@ -28,7 +29,7 @@ class SeekerController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.seekers.create');
     }
 
     /**
@@ -39,7 +40,36 @@ class SeekerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new User;
+
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->address = $request->input('address');
+        $user->phone = $request->input('phone');
+        $user->is_active = $request->input('is_active');
+        $user->user_type_id = 1;
+        $user->password = $request->input('password');
+        $user->save();
+
+        if($request->hasFile('profileImage')){
+            $file = $request->file('profileImage');
+            $fileExt = $file->getClientOriginalExtension();
+
+            $newFileName = $user->id . '-' .time() . '.' . $fileExt;
+
+            $destinationPath = 'users/';
+
+           if($user->image) {
+               unlink(public_path('uploads/' . $destinationPath . $user->image));
+            }
+            
+            $file->storeAs($destinationPath, $newFileName, 'uploads');
+
+            $user->image = $newFileName;
+            $user->save();
+        }
+
+        return redirect()->back();
     }
 
     /**
@@ -48,9 +78,11 @@ class SeekerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($user)
     {
-        //
+       // dd($user);
+        $user = User::findOrFail($user);
+        return view('admin.seekers.show', compact(['user']));
     }
 
     /**
