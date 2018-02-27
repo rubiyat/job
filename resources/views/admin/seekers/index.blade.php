@@ -34,7 +34,7 @@
                     <td>{{  $user->email }}</td>
                     <td class="hidden-print">
                       <a type="button" href="{{ route('seekers.show', ['user' => $user->id]) }}" class="btn btn-info glyphicon glyphicon-eye-open" title="Show"></a>
-                      
+                      <a type="button" href="{{ route('seekers.edit', ['uaer' => $user->id]) }}" class="btn btn-success glyphicon glyphicon-edit" title="Edit"></a>
                     </td>
                     
                 </tr>

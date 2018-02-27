@@ -71,15 +71,7 @@
                             <div class="form-line">
                                 <input type="file" name="profileImage" id="profileImage">
                             </div>
-                        </div>    
-                        <label for="is_active">Status</label>         
-                        <div class="form-group">
-                            <select name="is_active" class="form-control" id="is_active">
-                                <option>-Select Status-</option>
-                                <option value="0">Active</option>
-                                <option value="1">Inactive</option>
-                            </select>
-                        </div>                    
+                        </div>                   
                         <label for="password">Password</label>
                         <div class="form-group">               
                             <div class="form-line">

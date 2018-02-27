@@ -46,7 +46,7 @@ class SeekerController extends Controller
         $user->email = $request->input('email');
         $user->address = $request->input('address');
         $user->phone = $request->input('phone');
-        $user->is_active = $request->input('is_active');
+        $user->is_active = 0;
         $user->user_type_id = 1;
         $user->password = $request->input('password');
         $user->save();
@@ -91,9 +91,10 @@ class SeekerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($user)
     {
-        //
+        $user = User::findOrFail($user);
+        return view('admin.seekers.edit', compact(['user']));
     }
 
     /**
@@ -103,9 +104,38 @@ class SeekerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $user)
     {
-        //
+        $user = User::findOrFail($user);
+
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->address = $request->input('address');
+        $user->phone = $request->input('phone');
+        $user->is_active = $request->input('is_active');
+        $user->user_type_id = 1;
+        $user->password = $request->input('password');
+        $user->save();
+
+        if($request->hasFile('profileImage')){
+            $file = $request->file('profileImage');
+            $fileExt = $file->getClientOriginalExtension();
+
+            $newFileName = $user->id . '-' .time() . '.' . $fileExt;
+
+            $destinationPath = 'users/';
+
+           if($user->image) {
+               unlink(public_path('uploads/' . $destinationPath . $user->image));
+            }
+            
+            $file->storeAs($destinationPath, $newFileName, 'uploads');
+
+            $user->image = $newFileName;
+            $user->save();
+        }
+
+        return redirect('admin/seekers')
     }
 
     /**
