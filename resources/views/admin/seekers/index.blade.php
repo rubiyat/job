@@ -35,8 +35,12 @@
                     <td class="hidden-print">
                       <a type="button" href="{{ route('seekers.show', ['user' => $user->id]) }}" class="btn btn-info glyphicon glyphicon-eye-open" title="Show"></a>
                       <a type="button" href="{{ route('seekers.edit', ['uaer' => $user->id]) }}" class="btn btn-success glyphicon glyphicon-edit" title="Edit"></a>
+                      <form action="{!! action('JobSeekerController@destroy', $user->id) !!}" method="POST" style="display: inline-block;">
+                        {{ csrf_field() }} {{ method_field('DELETE') }}
+                       <button type="submit" title="Delete" role="button" class="btn btn-danger"><i class="glyphicon glyphicon-trash" title="Delete"></i></button>
+                    </form>
                     </td>
-                    
+                       
                 </tr>
             </tbody>
             @endforeach

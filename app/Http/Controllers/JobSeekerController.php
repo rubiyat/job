@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Seeker;
+use App\JobSeeker;
 use App\User;
 use DB;
 
-class SeekerController extends Controller
+class JobSeekerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -135,7 +135,7 @@ class SeekerController extends Controller
             $user->save();
         }
 
-        return redirect('admin/seekers')
+        return redirect('admin/seekers');
     }
 
     /**
@@ -144,8 +144,13 @@ class SeekerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($user)
     {
-        //
+        $seeker = JobSeeker::where('user_id', $user)->delete();
+
+        $user = User::findOrFail($user)->delete();
+
+
+        return redirect()->back();
     }
 }

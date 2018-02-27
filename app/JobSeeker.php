@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Seeker extends Model
+class JobSeeker extends Model
 {
     //
 }
