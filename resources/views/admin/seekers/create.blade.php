@@ -32,7 +32,7 @@
               <!-- Nav tabs -->
               <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="active"><a href="#basicInfo" aria-controls="basicInfo" role="tab" data-toggle="tab">Basic Info</a></li>
-                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+                <li role="presentation"><a href="#workInfo" aria-controls="workInfo" role="tab" data-toggle="tab">Working Info</a></li>
                 <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
                 <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
               </ul>
@@ -71,7 +71,28 @@
                             <div class="form-line">
                                 <input type="file" name="profileImage" id="profileImage">
                             </div>
-                        </div>                   
+                        </div> 
+                        <label for="hourly_rate">Hourly Rate</label>
+                        <div class="form-group">
+                            <div class="form-line">
+                                 <input type="number" name="hourly_rate" id="hourly_rate" class="form-control" placeholder="Enter your hourly rate">
+                            </div>
+                        </div>
+                        <label for="work_start_time">Work Start Time</label>
+                        <div class="input-group clockpicker">
+                          <input type="text" class="form-control" name="work_time_start" value="09:30">
+                          <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-time"></span>
+                           </span>
+                        </div><br>
+                         <label for="work_end_time">Work End Time</label>
+                       <div class="input-group clockpicker">
+                          <input type="text" class="form-control" name="work_time_end" value="09:30">
+                          <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-time"></span>
+                           </span>
+                        </div><br>
+  
                         <label for="password">Password</label>
                         <div class="form-group">               
                             <div class="form-line">
@@ -90,5 +111,12 @@
 
 	  </div>
 	</div>
-  
+
+
+@endsection
+
+@section('script')
+  <script type="text/javascript">
+    $('.clockpicker').clockpicker();
+  </script>
 @endsection

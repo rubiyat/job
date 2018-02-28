@@ -69,6 +69,15 @@ class JobSeekerController extends Controller
             $user->save();
         }
 
+        $seeker = new JObSeeker;
+
+        $seeker->user_id = $user->id;
+        $seeker->hourly_rate = $request->input('hourly_rate');
+        $seeker->work_time_start = $request->input('work_time_start');
+        $seeker->work_time_end = $request->input('work_time_end');
+
+        $seeker->save();
+
         return redirect()->back();
     }
 

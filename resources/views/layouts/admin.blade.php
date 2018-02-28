@@ -20,6 +20,8 @@
     <!-- Custom Fonts -->
     <link href="{{ asset('font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
 
+    <link rel="stylesheet" type="text/css" href="{{ asset('dist/bootstrap-clockpicker.min.css') }}">
+
      <!-- Custom Style -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css">
 
@@ -259,6 +261,8 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 
+    <script type="text/javascript" src="{{ asset('dist/bootstrap-clockpicker.min.js') }}"></script>
+  
     @yield('script')
 
 </body>
