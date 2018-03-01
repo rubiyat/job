@@ -121,10 +121,10 @@ class JobSeekerController extends Controller
         $user->email = $request->input('email');
         $user->address = $request->input('address');
         $user->phone = $request->input('phone');
-        $user->is_active = $request->input('is_active');
+        $user->is_active = 0;
         $user->user_type_id = 1;
         $user->password = $request->input('password');
-        $user->save();
+        //$user->save();
 
         if($request->hasFile('profileImage')){
             $file = $request->file('profileImage');
@@ -141,8 +141,21 @@ class JobSeekerController extends Controller
             $file->storeAs($destinationPath, $newFileName, 'uploads');
 
             $user->image = $newFileName;
-            $user->save();
+            //$user->save();
         }
+
+
+
+        $seeker = JobSeeker::where('user_id', $user->id)->first();
+
+        $seeker->user_id = $user->id;
+        $seeker->hourly_rate = $request->input('hourly_rate');
+        $seeker->work_time_start = $request->input('work_time_start');
+        $seeker->work_time_end = $request->input('work_time_end');
+
+        $user->save();
+        $seeker->save();
+
 
         return redirect('admin/seekers');
     }

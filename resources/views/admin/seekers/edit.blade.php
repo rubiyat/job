@@ -72,21 +72,27 @@
                           <input type="file" name="profileImage" id="profileImage">
                       </div>
                   </div>    
-                 <label for="is_active">Status</label>         
-                    <div class="form-group">
-                        <select name="is_active" class="form-control" id="is_active">
-                            <option value="{{ $user->is_active }}">
-                                {!! ($user->is_active == 0) ? 
-                                    'Active' :
-                                    'Inactive'
-                                !!}
-                            </option>
-                            {!! ($user->is_active == 0) ? 
-                                '<option value="1">Inactive</option>' :
-                                '<option value="0">Active</option>'
-                            !!}
-                        </select>
-                    </div>                  
+                   <label for="hourly_rate">Hourly Rate</label>
+                   <div class="form-group">
+                       <div class="form-line">
+                            <input type="number" name="hourly_rate" id="hourly_rate" class="form-control" placeholder="Enter your hourly rate" value="{{ $user->jobSeeker->hourly_rate }}">
+                       </div>
+                   </div>
+                   <label for="work_start_time">Work Start Time</label>
+                   <div class="input-group clockpicker">
+                     <input type="text" class="form-control" name="work_time_start" value="{{ $user->jobSeeker->work_time_start }}">
+                     <span class="input-group-addon">
+                       <span class="glyphicon glyphicon-time"></span>
+                      </span>
+                   </div><br>
+                    <label for="work_end_time">Work End Time</label>
+                  <div class="input-group clockpicker">
+                     <input type="text" class="form-control" name="work_time_end" value="{{ $user->jobSeeker->work_time_end }}">
+                     <span class="input-group-addon">
+                       <span class="glyphicon glyphicon-time"></span>
+                      </span>
+                   </div><br>
+                               
                   <label for="password">Password</label>
                   <div class="form-group">               
                       <div class="form-line">
