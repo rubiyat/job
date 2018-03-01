@@ -38,4 +38,8 @@ class User extends Authenticatable
     public function userType() {
         return $this->belongsTo('App\UserType');
     }
+
+    public function jobSeeker() {
+        return $this->hasOne('App\JobSeeker');
+    }
 }

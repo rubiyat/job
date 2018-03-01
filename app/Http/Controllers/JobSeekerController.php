@@ -89,9 +89,9 @@ class JobSeekerController extends Controller
      */
     public function show($user)
     {
-       // dd($user);
+       
         $user = User::findOrFail($user);
-        return view('admin.seekers.show', compact(['user']));
+        return view('admin.seekers.show',compact(['user']));
     }
 
     /**

@@ -28,6 +28,9 @@
                         <p>{{ $user->email }}</p>
                         <p>{{ $user->address }}</p>
                         <p>{{ $user->phone }}</p>
+                        <p>{{ $user->jobSeeker->hourly_rate }}</p>
+                        <p>{{ $user->jobSeeker->work_time_start }}</p>
+                        <p>{{ $user->jobSeeker->work_time_end }}</p>
                     </div>
                     <div class="col-md-6">
                         <span><img height="250" width="250" src="{{ asset('uploads/users/' . $user->image) }}" alt="{{ $user->name }}" title="{{ $user->name }}"></span>
