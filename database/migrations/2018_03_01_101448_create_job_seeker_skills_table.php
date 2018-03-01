@@ -18,7 +18,7 @@ class CreateJobSeekerSkillsTable extends Migration
             $table->integer('job_seeker_id')->unsigned()->nullable()->index();
             $table->string('title', 200);
             $table->timestamps();
-            
+
             $table->foreign('job_seeker_id')->references('id')->on('job_seekers')->onDelete('restrict')->onUpdate('cascade');
         });
     }
